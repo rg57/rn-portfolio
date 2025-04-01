@@ -97,7 +97,7 @@ const products = [
   },
   {
     id: 5,
-    name: "Byadgi 5431",
+    name: "Byadgi 5531",
     image: "https://source.unsplash.com/600x400/?redchilli",
     description: `Byadgi 5431 is known for its rich color and mild heat, widely used for making chili powder and food coloring.`,
     price: { usd: 2.2, inr: 200 },
