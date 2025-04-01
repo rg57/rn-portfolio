@@ -173,52 +173,63 @@ const ContactSection = forwardRef((props, ref) => {
                     mb: 4,
                   }}
                 >
-                  Have a project in mind or just want to say hello? Let's create
-                  something amazing together.
+                  "Have a unique spice blend in mind or just want to say hello?
+                  Let’s craft something flavorful together. Get in touch with us
+                  today!"
                 </Typography>
 
-                <Box sx={{ mb: 4 }}>
-                  <Typography variant="h6" sx={{ color: "#d4af37", mb: 2 }}>
-                    Contact Info
-                  </Typography>
-                  <Typography variant="body1" sx={{ color: "#888", mb: 1 }}>
-                    📧 info@rnentp.com
-                  </Typography>
-                  <Typography variant="body1" sx={{ color: "#888" }}>
-                    📞 +91-123-456-7890
-                  </Typography>
-                </Box>
-
-                <SocialIcons>
-                  {[
-                    { icon: <LinkedInIcon />, color: "#0077b5", link: "#" },
-                    { icon: <TwitterIcon />, color: "#1DA1F2", link: "#" },
-                    { icon: <InstagramIcon />, color: "#E4405F", link: "#" },
-                    { icon: <WhatsAppIcon />, color: "#25D366", link: "#" },
-                  ].map((social, index) => (
-                    <motion.div
-                      key={index}
-                      whileHover={{ scale: 1.1 }}
-                      whileTap={{ scale: 0.9 }}
-                    >
-                      <IconButton
-                        href={social.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        sx={{
-                          color: social.color,
-                          background: "rgba(255, 255, 255, 0.05)",
-                          backdropFilter: "blur(5px)",
-                          "&:hover": {
-                            background: "rgba(255, 255, 255, 0.1)",
-                          },
-                        }}
-                      >
-                        {social.icon}
-                      </IconButton>
-                    </motion.div>
-                  ))}
-                </SocialIcons>
+                <Grid container spacing={2} sx={{ flexDirection: "row" }}>
+                  <Box sx={{ mb: 4, mr: 12 }}>
+                    <Typography variant="h6" sx={{ color: "#d4af37", mb: 2 }}>
+                      Contact Info
+                    </Typography>
+                    <Typography variant="body1" sx={{ color: "#888", mb: 1 }}>
+                      📧 info@rnentp.com
+                    </Typography>
+                    <Typography variant="body1" sx={{ color: "#888" }}>
+                      📞 +91-8057518857 , +91-9354456931
+                    </Typography>
+                  </Box>
+                  <Box sx={{ mb: 4 }}>
+                    <Typography variant="h6" sx={{ color: "#d4af37", mb: 2 }}>
+                      Follow Us
+                    </Typography>
+                    <SocialIcons>
+                      {[
+                        { icon: <LinkedInIcon />, color: "#0077b5", link: "#" },
+                        { icon: <TwitterIcon />, color: "#1DA1F2", link: "#" },
+                        {
+                          icon: <InstagramIcon />,
+                          color: "#E4405F",
+                          link: "#",
+                        },
+                        { icon: <WhatsAppIcon />, color: "#25D366", link: "#" },
+                      ].map((social, index) => (
+                        <motion.div
+                          key={index}
+                          whileHover={{ scale: 1.1 }}
+                          whileTap={{ scale: 0.9 }}
+                        >
+                          <IconButton
+                            href={social.link}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            sx={{
+                              color: social.color,
+                              background: "rgba(255, 255, 255, 0.05)",
+                              backdropFilter: "blur(5px)",
+                              "&:hover": {
+                                background: "rgba(255, 255, 255, 0.1)",
+                              },
+                            }}
+                          >
+                            {social.icon}
+                          </IconButton>
+                        </motion.div>
+                      ))}
+                    </SocialIcons>
+                  </Box>
+                </Grid>
               </Box>
             </motion.div>
           </Grid>

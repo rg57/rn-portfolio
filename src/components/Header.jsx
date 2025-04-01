@@ -41,7 +41,7 @@ const Header = ({ scrollToSection, refs }) => {
       >
         <Typography
           variant="h6"
-          sx={{ fontSize: "2.5rem", color: "#d4af37", fontWeight: "bold" }}
+          sx={{ fontSize: "2rem", color: "#d4af37", fontWeight: "bold" }}
         >
           RN Enterprises
         </Typography>
@@ -53,24 +53,28 @@ const Header = ({ scrollToSection, refs }) => {
           <NavButton
             onClick={() => scrollToSection(refs.home)}
             startIcon={<HomeIcon sx={{ color: "#d4af37" }} />}
+            sx={{ fontSize: "1rem" }}
           >
             Home
           </NavButton>
           <NavButton
             onClick={() => scrollToSection(refs.aboutRef)}
             startIcon={<InfoIcon sx={{ color: "#d4af37" }} />}
+            sx={{ fontSize: "1rem" }}
           >
             About
           </NavButton>
           <NavButton
             onClick={() => scrollToSection(refs.productsRef)}
             startIcon={<ShoppingCartIcon sx={{ color: "#d4af37" }} />}
+            sx={{ fontSize: "1rem" }}
           >
             Products
           </NavButton>
           <NavButton
             onClick={() => scrollToSection(refs.contactRef)}
             startIcon={<ContactMailIcon sx={{ color: "#d4af37" }} />}
+            sx={{ fontSize: "1rem" }}
           >
             Contact
           </NavButton>
