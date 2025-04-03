@@ -155,15 +155,14 @@ const HeroSection = forwardRef((props, ref) => {
               <FeatureItem>
                 <FeatureIcon>✓</FeatureIcon>
                 <Typography variant="h6" sx={{ color: "#d4af37", mb: 1 }}>
-                  Enhances Taste & Aroma
+                  Enhances Taste
                 </Typography>
                 <Typography variant="body2" sx={{ color: "#e0e0e0" }}>
-                  Our premium spices elevate your dishes with rich flavors and
-                  vibrant aromas.
+                  Elevate dishes flavors and aromas.
                 </Typography>
               </FeatureItem>
             </Grid>
-            <Grid item xs={12} md={4}>
+            <Grid item xs={12} sm={6} md={4}>
               <FeatureItem variants={itemVariants}>
                 <FeatureIcon>★</FeatureIcon>
                 <Typography variant="h6" sx={{ color: "#d4af37", mb: 1 }}>
@@ -174,7 +173,7 @@ const HeroSection = forwardRef((props, ref) => {
                 </Typography>
               </FeatureItem>
             </Grid>
-            <Grid item xs={12} md={4}>
+            <Grid item xs={12} sm={6} md={4}>
               <FeatureItem variants={itemVariants}>
                 <FeatureIcon>♦</FeatureIcon>
                 <Typography variant="h6" sx={{ color: "#d4af37", mb: 1 }}>
