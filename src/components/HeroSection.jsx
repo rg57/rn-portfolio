@@ -1,12 +1,5 @@
 import React, { forwardRef, useState, useEffect } from "react"
-import {
-  Container,
-  Typography,
-  Box,
-  Button,
-  Grid,
-  Divider,
-} from "@mui/material"
+import { Container, Typography, Box, Button, Grid } from "@mui/material"
 import { styled } from "@mui/system"
 import { motion } from "framer-motion"
 import heroImage1 from "../assets/heroImage1.jpg"
