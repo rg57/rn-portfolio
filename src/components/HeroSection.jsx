@@ -16,8 +16,7 @@ const Section = styled(Box)(({ theme }) => ({
   textAlign: "center",
 }))
 
-// Diagonal split using clip-path - keeping this logic unchanged
-const DiagonalImage = styled(Box)(({ isTopLeft, bgImage }) => ({
+const DiagonalImage = styled(Box)(({ bgImage }) => ({
   position: "absolute",
   top: 0,
   left: 0,
@@ -27,9 +26,6 @@ const DiagonalImage = styled(Box)(({ isTopLeft, bgImage }) => ({
   backgroundSize: "cover",
   backgroundPosition: "center",
   transition: "transform 0.8s ease-in-out",
-  clipPath: isTopLeft
-    ? "polygon(0 0, 100% 0, 0 100%)"
-    : "polygon(100% 0, 100% 100%, 0 100%)",
 }))
 
 const Overlay = styled(Box)({
@@ -38,7 +34,7 @@ const Overlay = styled(Box)({
   left: 0,
   width: "100%",
   height: "100%",
-  backgroundColor: "rgba(0, 0, 0, 0.7)", // Slightly darker for more premium look
+  backgroundColor: "rgba(0, 0, 0, 0.7)", // Dark overlay for better readability
   zIndex: 1,
 })
 
@@ -49,7 +45,7 @@ const HeroContent = styled(Box)({
   width: "100%",
 })
 
-// Premium decorative elements
+// Gold Decorative Elements
 const GoldAccent = styled(Box)({
   width: "40px",
   height: "3px",
@@ -71,6 +67,7 @@ const PremiumBadge = styled(motion.div)({
   marginBottom: "15px",
 })
 
+// Features Section
 const FeatureItem = styled(motion.div)({
   display: "flex",
   flexDirection: "column",
@@ -92,25 +89,15 @@ const FeatureIcon = styled(Box)({
   fontSize: "22px",
 })
 
-// Button with animation
+// Button Animations
 const AnimatedButton = styled(motion.div)({
   display: "inline-block",
   marginTop: "20px",
 })
 
-// Centered container for features grid
-const CenteredGridContainer = styled(Grid)(({ theme }) => ({
-  justifyContent: "center",
-  width: "100%",
-  margin: "20px auto 40px",
-  maxWidth: "1000px", // Limit width to ensure proper centering
-}))
-
 const HeroSection = forwardRef((props, ref) => {
-  const [isHovered, setIsHovered] = useState(false)
   const [count, setCount] = useState(0)
 
-  // Animated counter effect for the stats
   useEffect(() => {
     if (count < 25) {
       const timer = setTimeout(() => setCount((prevCount) => prevCount + 1), 60)
@@ -118,7 +105,6 @@ const HeroSection = forwardRef((props, ref) => {
     }
   }, [count])
 
-  // Animation variants
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -136,22 +122,9 @@ const HeroSection = forwardRef((props, ref) => {
   }
 
   return (
-    <Section
-      ref={ref}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-    >
-      <DiagonalImage
-        isTopLeft={true}
-        bgImage={heroImage1}
-        style={{ transform: isHovered ? "scale(1.05)" : "scale(1)" }}
-      />
-      <DiagonalImage
-        isTopLeft={false}
-        bgImage={heroImage2}
-        style={{ transform: isHovered ? "scale(1.05)" : "scale(1)" }}
-      />
-
+    <Section ref={ref}>
+      <DiagonalImage bgImage={heroImage1} />
+      <DiagonalImage bgImage={heroImage2} />
       <Overlay />
       <Container
         maxWidth="lg"
@@ -179,7 +152,7 @@ const HeroSection = forwardRef((props, ref) => {
                 sx={{
                   fontWeight: "bold",
                   color: "#d4af37",
-                  fontSize: { xs: "2.5rem", md: "3.5rem" },
+                  fontSize: { xs: "2rem", md: "3.5rem" },
                   letterSpacing: "1px",
                   textShadow: "0 2px 10px rgba(0, 0, 0, 0.5)",
                 }}
@@ -199,33 +172,38 @@ const HeroSection = forwardRef((props, ref) => {
                   color: "#fff",
                   fontWeight: "300",
                   letterSpacing: "1px",
-                  maxWidth: "800px",
+                  maxWidth: { xs: "90%", md: "800px" },
                   margin: "0 auto 30px",
                 }}
               >
                 Premium Red Chillies for the Discerning Palate — Cultivated with
-                Passion, Processed with Precision, Perfected for Excellence
+                Passion, Processed with Precision, Perfected for Excellence.
               </Typography>
             </motion.div>
 
-            <CenteredGridContainer
+            {/* Features */}
+            <Grid
               container
               spacing={3}
-              component={motion.div}
-              variants={containerVariants}
+              sx={{
+                justifyContent: "center",
+                maxWidth: "1000px",
+                margin: "20px auto",
+              }}
             >
-              <Grid item xs={12} md={4}>
+              <Grid item xs={12} sm={6} md={4}>
                 <FeatureItem variants={itemVariants}>
                   <FeatureIcon>✓</FeatureIcon>
                   <Typography variant="h6" sx={{ color: "#d4af37", mb: 1 }}>
-                    {count}+ Years Experience
+                    Enhances Taste & Aroma
                   </Typography>
                   <Typography variant="body2" sx={{ color: "#e0e0e0" }}>
-                    Generations of expertise in chilli cultivation
+                    Our premium spices elevate your dishes with rich flavors and
+                    vibrant aromas.
                   </Typography>
                 </FeatureItem>
               </Grid>
-              <Grid item xs={12} md={4}>
+              <Grid item xs={12} sm={6} md={4}>
                 <FeatureItem variants={itemVariants}>
                   <FeatureIcon>★</FeatureIcon>
                   <Typography variant="h6" sx={{ color: "#d4af37", mb: 1 }}>
@@ -247,8 +225,9 @@ const HeroSection = forwardRef((props, ref) => {
                   </Typography>
                 </FeatureItem>
               </Grid>
-            </CenteredGridContainer>
+            </Grid>
 
+            {/* Button */}
             <AnimatedButton
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.98 }}
@@ -259,13 +238,8 @@ const HeroSection = forwardRef((props, ref) => {
                   backgroundColor: "#d4af37",
                   color: "#000",
                   fontWeight: "bold",
-                  padding: "14px 32px",
-                  fontSize: "1.1rem",
+                  padding: "12px 24px",
                   borderRadius: "8px",
-                  "&:hover": { backgroundColor: "#b8962e" },
-                  boxShadow: "0 4px 20px rgba(212, 175, 55, 0.4)",
-                  letterSpacing: "1px",
-                  textTransform: "none",
                 }}
               >
                 Explore Premium Collection
