@@ -2,8 +2,8 @@ import React, { forwardRef, useState, useEffect } from "react"
 import { Container, Typography, Box, Button, Grid } from "@mui/material"
 import { styled } from "@mui/system"
 import { motion } from "framer-motion"
-import heroImage1 from "../assets/heroImage1.jpg"
-import heroImage2 from "../assets/heroImage2.jpg"
+import heroImage1 from "../assets/heroimage1.jpg"
+import heroImage2 from "../assets/heroimage2.jpg"
 
 const Section = styled(Box)(({ theme }) => ({
   minHeight: "100vh",
