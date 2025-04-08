@@ -17,12 +17,16 @@ import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew"
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos"
 import PlaceIcon from "@mui/icons-material/Place"
 import VerifiedIcon from "@mui/icons-material/Verified"
+import tejaImage from "../assets/teja-s17.png"
+import gunturs4Image from "../assets/guntur-s4.jpg"
+import gunturs10Image from "../assets/guntur-s10.jpeg"
+import byadgi5531Image from "../assets/byadgi-5531.png"
 
 const products = [
   {
     id: 1,
     name: "Teja S17",
-    image: "https://source.unsplash.com/600x400/?redchilli",
+    image: tejaImage,
     description: `High heat and deep red color make Teja S17 one of the most sought-after chili varieties in the spice industry.`,
     price: { usd: 3.0, inr: 250 },
     moq: "1000 kg",
@@ -41,7 +45,7 @@ const products = [
   {
     id: 2,
     name: "Guntur S4",
-    image: "https://source.unsplash.com/600x400/?redchilli",
+    image: gunturs4Image,
     description: `Guntur S4 is known for its moderate pungency and rich red color, widely used in Indian and international cuisines.`,
     price: { usd: 2.6, inr: 220 },
     moq: "800 kg",
@@ -60,7 +64,7 @@ const products = [
   {
     id: 3,
     name: "Armour Teja",
-    image: "https://source.unsplash.com/600x400/?redchilli",
+    image: tejaImage,
     description: `Armour Teja is a premium variant known for its extra heat and consistent quality, ideal for spice blends and food processing.`,
     price: { usd: 3.2, inr: 270 },
     moq: "1000 kg",
@@ -79,7 +83,7 @@ const products = [
   {
     id: 4,
     name: "Guntur S10",
-    image: "https://source.unsplash.com/600x400/?redchilli",
+    image: gunturs10Image,
     description: `S10 chili is favored for its medium pungency and mild aroma, making it perfect for seasoning and masala blends.`,
     price: { usd: 2.4, inr: 210 },
     moq: "800 kg",
@@ -98,8 +102,8 @@ const products = [
   {
     id: 5,
     name: "Byadgi 5531",
-    image: "https://source.unsplash.com/600x400/?redchilli",
-    description: `Byadgi 5431 is known for its rich color and mild heat, widely used for making chili powder and food coloring.`,
+    image: byadgi5531Image,
+    description: `Byadgi 5531 is known for its vibrant color and mild flavor, making it a popular choice for curries and sauces.`,
     price: { usd: 2.2, inr: 200 },
     moq: "800 kg",
     origin: "Karnataka, India",
