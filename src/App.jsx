@@ -71,8 +71,9 @@ function App() {
           refs={{ homeRef, aboutRef, productsRef, contactRef }}
         />
         <HeroSection ref={homeRef} />
-        <AboutSection ref={aboutRef} />
         <ProductsSection ref={productsRef} />
+        <AboutSection ref={aboutRef} />
+
         <ContactSection ref={contactRef} />
         <Footer />
       </Box>
