@@ -12,6 +12,7 @@ import { styled } from "@mui/system"
 import { motion } from "framer-motion"
 import InfoIcon from "@mui/icons-material/Info"
 import rnLogo from "../assets/rn_logo.png"
+import rnbanner from "../assets/rn_banner.png"
 
 const Section = styled(Box)(({ theme }) => ({
   minHeight: "100vh",
@@ -30,7 +31,7 @@ const ContentBox = styled(motion.div)(({ theme }) => ({
 }))
 
 const ImageBox = styled(Box)(({ theme }) => ({
-  backgroundImage: `url(${rnLogo})`,
+  backgroundImage: `url(${rnbanner})`,
   backgroundSize: "contain",
   backgroundPosition: "center",
   backgroundRepeat: "no-repeat",
