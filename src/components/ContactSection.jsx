@@ -103,15 +103,50 @@ const SubmitButton = styled(motion.button)(({ theme }) => ({
   },
 }))
 
+const textFieldSx = {
+  "& .MuiInputBase-root": {
+    backgroundColor: "rgba(255, 255, 255, 0.05)",
+    color: "#fff",
+    borderRadius: "12px",
+  },
+  "& .MuiInputLabel-root": {
+    color: "#888",
+  },
+  "& .MuiOutlinedInput-root": {
+    "& fieldset": {
+      borderColor: "rgba(255, 255, 255, 0.1)",
+      borderWidth: "2px",
+    },
+    "&:hover fieldset": {
+      borderColor: "#d4af37",
+    },
+    "&.Mui-focused fieldset": {
+      borderColor: "#d4af37",
+      boxShadow: "0 0 0 2px rgba(212, 175, 55, 0.2)",
+    },
+  },
+}
+
 const Alert = MuiAlert
 
 const ContactSection = forwardRef((props, ref) => {
-  const [formData, setFormData] = useState({ name: "", email: "", message: "" })
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+    phone: "",
+    location: "",
+  })
   const [openSnackbar, setOpenSnackbar] = useState(false)
   const [snackbarMessage, setSnackbarMessage] = useState("")
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [showSuccess, setShowSuccess] = useState(false)
   const theme = useTheme()
+
+  const handleChange = (e) => {
+    const { name, value } = e.target
+    setFormData((prevData) => ({ ...prevData, [name]: value }))
+  }
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -124,15 +159,23 @@ const ContactSection = forwardRef((props, ref) => {
       return
     }
 
-    // Simulate API call
-    await new Promise((resolve) => setTimeout(resolve, 1500))
+    const res = await fetch("https://formspree.io/f/mldjalvp", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify(formData),
+    })
 
-    setSnackbarMessage("Message sent successfully!")
-    setOpenSnackbar(true)
-    setShowSuccess(true)
-    setTimeout(() => setShowSuccess(false), 2000)
-    setFormData({ name: "", email: "", message: "" })
-    setIsSubmitting(false)
+    if (res.ok) {
+      setSnackbarMessage("Message sent successfully!")
+      setOpenSnackbar(true)
+      setShowSuccess(true)
+      setTimeout(() => setShowSuccess(false), 2000)
+      setFormData({ name: "", email: "", message: "", phone: "", location: "" })
+      setIsSubmitting(false)
+    }
   }
 
   const handleCloseSnackbar = () => {
@@ -249,87 +292,141 @@ const ContactSection = forwardRef((props, ref) => {
               transition={{ duration: 0.8, delay: 0.2 }}
             >
               <ContactCard>
+                <Typography
+                  align="center"
+                  variant="h4"
+                  sx={{ color: "#fff", mb: 4 }}
+                >
+                  Get in Touch
+                </Typography>
                 <form onSubmit={handleSubmit}>
                   <Grid container spacing={3}>
-                    <Grid item xs={12} sm={6}>
-                      <StyledTextField
-                        fullWidth
-                        label="Your Name"
-                        value={formData.name}
-                        onChange={(e) =>
-                          setFormData({ ...formData, name: e.target.value })
-                        }
-                        variant="outlined"
-                        InputLabelProps={{ shrink: true }}
-                      />
+                    <Grid
+                      item
+                      xs={12}
+                      container
+                      spacing={2}
+                      sx={{ justifyContent: "space-between" }}
+                    >
+                      <Grid item xs={12} sm={6}>
+                        <TextField
+                          name="name"
+                          label="Your Name"
+                          value={formData.name}
+                          onChange={handleChange}
+                          variant="outlined"
+                          fullWidth
+                          InputLabelProps={{ shrink: true }}
+                          sx={{
+                            ...textFieldSx,
+                            "& .MuiInputBase-root": {
+                              ...textFieldSx["& .MuiInputBase-root"],
+                              height: "56px",
+                            },
+                          }}
+                        />
+                      </Grid>
+                      <Grid item xs={12} sm={6}>
+                        <TextField
+                          name="email"
+                          label="Email Address"
+                          type="email"
+                          value={formData.email}
+                          onChange={handleChange}
+                          variant="outlined"
+                          fullWidth
+                          InputLabelProps={{ shrink: true }}
+                          sx={{
+                            ...textFieldSx,
+                            "& .MuiInputBase-root": {
+                              ...textFieldSx["& .MuiInputBase-root"],
+                              height: "56px",
+                            },
+                          }}
+                        />
+                      </Grid>
                     </Grid>
-                    <Grid item xs={12} sm={6}>
-                      <StyledTextField
-                        fullWidth
-                        label="Email Address"
-                        type="email"
-                        value={formData.email}
-                        onChange={(e) =>
-                          setFormData({ ...formData, email: e.target.value })
-                        }
-                        variant="outlined"
-                        InputLabelProps={{ shrink: true }}
-                      />
-                    </Grid>
-                    <Grid item xs={12}>
-                      <StyledTextField
-                        fullWidth
-                        label="Your Message"
-                        multiline
-                        rows={6}
-                        value={formData.message}
-                        onChange={(e) =>
-                          setFormData({ ...formData, message: e.target.value })
-                        }
-                        variant="outlined"
-                        InputLabelProps={{ shrink: true }}
-                      />
-                    </Grid>
-                    <Grid item xs={12}>
-                      <Box
-                        sx={{ position: "relative", display: "inline-block" }}
-                      >
-                        <SubmitButton
-                          type="submit"
-                          disabled={isSubmitting}
-                          whileTap={{ scale: 0.95 }}
-                        >
-                          {isSubmitting ? (
-                            "Sending..."
-                          ) : (
-                            <>
-                              <SendIcon />
-                              Send Message
-                            </>
-                          )}
-                        </SubmitButton>
 
-                        <AnimatePresence>
-                          {showSuccess && (
-                            <motion.div
-                              initial={{ scale: 0 }}
-                              animate={{ scale: 1 }}
-                              exit={{ scale: 0 }}
-                              style={{
-                                position: "absolute",
-                                right: -40,
-                                top: "50%",
-                                transform: "translateY(-50%)",
-                              }}
-                            >
-                              <CheckCircleIcon
-                                sx={{ color: "#4CAF50", fontSize: 32 }}
-                              />
-                            </motion.div>
-                          )}
-                        </AnimatePresence>
-                      </Box>
+                    <Grid item xs={12} container spacing={2}>
+                      <Grid item xs={12} sm={6}>
+                        <TextField
+                          name="phone"
+                          label="Phone Number"
+                          type="tel"
+                          value={formData.phone}
+                          onChange={handleChange}
+                          variant="outlined"
+                          fullWidth
+                          InputLabelProps={{ shrink: true }}
+                          sx={textFieldSx}
+                        />
+                      </Grid>
+                      <Grid item xs={12} sm={6}>
+                        <TextField
+                          name="location"
+                          label="Location"
+                          value={formData.location}
+                          onChange={handleChange}
+                          variant="outlined"
+                          fullWidth
+                          InputLabelProps={{ shrink: true }}
+                          sx={textFieldSx}
+                        />
+                      </Grid>
                     </Grid>
+                  </Grid>
+                  <Grid item xs={12} sx={{ mt: 3 }}>
+                    <TextField
+                      name="message"
+                      fullWidth
+                      label="Your Message"
+                      multiline
+                      rows={6}
+                      value={formData.message}
+                      onChange={handleChange}
+                      variant="outlined"
+                      InputLabelProps={{ shrink: true }}
+                      sx={textFieldSx}
+                    />
+                  </Grid>
+
+                  <Grid item xs={12} sx={{ mt: 4 }}>
+                    <Box sx={{ position: "relative", display: "inline-block" }}>
+                      <SubmitButton
+                        type="submit"
+                        disabled={isSubmitting}
+                        whileTap={{ scale: 0.95 }}
+                      >
+                        {isSubmitting ? (
+                          "Sending..."
+                        ) : (
+                          <>
+                            <SendIcon />
+                            Send Message
+                          </>
+                        )}
+                      </SubmitButton>
+
+                      <AnimatePresence>
+                        {showSuccess && (
+                          <motion.div
+                            initial={{ scale: 0 }}
+                            animate={{ scale: 1 }}
+                            exit={{ scale: 0 }}
+                            style={{
+                              position: "absolute",
+                              right: -40,
+                              top: "50%",
+                              transform: "translateY(-50%)",
+                            }}
+                          >
+                            <CheckCircleIcon
+                              sx={{ color: "#4CAF50", fontSize: 32 }}
+                            />
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
+                    </Box>
                   </Grid>
                 </form>
               </ContactCard>
