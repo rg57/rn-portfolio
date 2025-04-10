@@ -11,8 +11,10 @@ import {
 import { styled } from "@mui/system"
 import { motion } from "framer-motion"
 import InfoIcon from "@mui/icons-material/Info"
+import { CardMedia } from "@mui/material"
+
 import rnLogo from "../assets/rn_logo.png"
-import rnbanner from "../assets/rn_banner.png"
+import rnbanner from "../assets/website_banner.png"
 
 const Section = styled(Box)(({ theme }) => ({
   minHeight: "100vh",
@@ -28,17 +30,6 @@ const ContentBox = styled(motion.div)(({ theme }) => ({
   borderRadius: "16px",
   boxShadow: "0 8px 24px rgba(224, 192, 102, 0.15)",
   backdropFilter: "blur(6px)",
-}))
-
-const ImageBox = styled(Box)(({ theme }) => ({
-  backgroundImage: `url(${rnbanner})`,
-  backgroundSize: "contain",
-  backgroundPosition: "center",
-  backgroundRepeat: "no-repeat",
-  backgroundColor: "rgba(255, 255, 255, 0.05)",
-  borderRadius: "16px",
-  minHeight: "400px",
-  width: "100%",
 }))
 
 const AboutSection = forwardRef((props, ref) => {
@@ -100,14 +91,25 @@ const AboutSection = forwardRef((props, ref) => {
           </Grid>
 
           <Grid item xs={12} md={6}>
-            <motion.div
+            {/* <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
-            >
-              <ImageBox />
-            </motion.div>
+            > */}
+            <CardMedia
+              component="img"
+              image={rnbanner}
+              alt="RN Enterprises Banner"
+              sx={{
+                borderRadius: "16px",
+                width: "100%",
+                height: "100%",
+                boxShadow: "0 8px 24px rgba(224, 192, 102, 0.15)",
+              }}
+            />
+
+            {/* </motion.div> */}
           </Grid>
         </Grid>
 
