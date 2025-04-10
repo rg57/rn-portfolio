@@ -9,6 +9,7 @@ import {
   Snackbar,
   Grid,
   useTheme,
+  Stack,
 } from "@mui/material"
 import { styled } from "@mui/system"
 import { motion, AnimatePresence } from "framer-motion"
@@ -184,11 +185,17 @@ const ContactSection = forwardRef((props, ref) => {
                       Contact Info
                     </Typography>
                     <Typography variant="body1" sx={{ color: "#888", mb: 1 }}>
-                      📧 info@rnentp.com
+                      📧 rn.enterprises741@gmail.com
                     </Typography>
                     <Typography variant="body1" sx={{ color: "#888" }}>
                       📞 +91-8057518857 , +91-9354456931
                     </Typography>
+                    <Stack direction="row" spacing={1} alignItems="center">
+                      <WhatsAppIcon />
+                      <Typography variant="body1" sx={{ color: "#888" }}>
+                        +91-8057518857 , +91-9354456931
+                      </Typography>
+                    </Stack>
                   </Box>
                   <Box sx={{ mb: 4 }}>
                     <Typography variant="h6" sx={{ color: "#d4af37", mb: 2 }}>
@@ -196,8 +203,8 @@ const ContactSection = forwardRef((props, ref) => {
                     </Typography>
                     <SocialIcons>
                       {[
-                        { icon: <LinkedInIcon />, color: "#0077b5", link: "#" },
-                        { icon: <TwitterIcon />, color: "#1DA1F2", link: "#" },
+                        // { icon: <LinkedInIcon />, color: "#0077b5", link: "#" },
+                        // { icon: <TwitterIcon />, color: "#1DA1F2", link: "#" },
                         {
                           icon: <InstagramIcon />,
                           color: "#E4405F",
