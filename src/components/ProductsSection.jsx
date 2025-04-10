@@ -10,115 +10,14 @@ import {
   Stack,
   useMediaQuery,
   useTheme,
+  Button,
 } from "@mui/material"
 import { styled } from "@mui/system"
 import { motion } from "framer-motion"
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew"
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos"
 import PlaceIcon from "@mui/icons-material/Place"
-import VerifiedIcon from "@mui/icons-material/Verified"
-import tejaImage from "../assets/teja-s17.png"
-import gunturs4Image from "../assets/guntur-s4.jpg"
-import gunturs10Image from "../assets/guntur-s10.jpeg"
-import byadgi5531Image from "../assets/byadgi-5531.png"
-
-const products = [
-  {
-    id: 1,
-    name: "Teja S17",
-    image: tejaImage,
-    description: `High heat and deep red color make Teja S17 one of the most sought-after chili varieties in the spice industry.`,
-    price: { usd: 3.0, inr: 250 },
-    moq: "500 kg",
-    origin: "Andhra Pradesh, India",
-    certificates: ["ISO 9001:2015", "HACCP", "FSSAI"],
-    specifications: {
-      color: "Deep Red",
-      length: "8-12cm",
-      moisture: "≤ 10%",
-      pungency: "50,000-75,000 SHU",
-    },
-    packaging: ["25kg PP Bags", "50kg PP Bags", "Custom Packaging Available"],
-    shelfLife: "24 months when stored properly",
-    storage: "Store in a cool, dry place away from direct sunlight",
-  },
-  {
-    id: 2,
-    name: "Guntur S4",
-    image: gunturs4Image,
-    description: `Guntur S4 is known for its moderate pungency and rich red color, widely used in Indian and international cuisines.`,
-    price: { usd: 2.6, inr: 220 },
-    moq: "500 kg",
-    origin: "Andhra Pradesh, India",
-    certificates: ["ISO 9001:2015", "HACCP", "FSSAI"],
-    specifications: {
-      color: "Bright Red",
-      length: "9-14cm",
-      moisture: "≤ 10%",
-      pungency: "35,000-45,000 SHU",
-    },
-    packaging: ["25kg PP Bags", "50kg PP Bags", "Custom Packaging Available"],
-    shelfLife: "24 months when stored properly",
-    storage: "Store in a cool, dry place away from direct sunlight",
-  },
-  {
-    id: 3,
-    name: "Armour Teja",
-    image: tejaImage,
-    description: `Armour Teja is a premium variant known for its extra heat and consistent quality, ideal for spice blends and food processing.`,
-    price: { usd: 3.2, inr: 270 },
-    moq: "500 kg",
-    origin: "Telangana, India",
-    certificates: ["ISO 9001:2015", "HACCP", "FSSAI"],
-    specifications: {
-      color: "Intense Red",
-      length: "8-12cm",
-      moisture: "≤ 9%",
-      pungency: "60,000-80,000 SHU",
-    },
-    packaging: ["25kg PP Bags", "50kg PP Bags", "Custom Packaging Available"],
-    shelfLife: "24 months when stored properly",
-    storage: "Store in a cool, dry place away from direct sunlight",
-  },
-  {
-    id: 4,
-    name: "Guntur S10",
-    image: gunturs10Image,
-    description: `S10 chili is favored for its medium pungency and mild aroma, making it perfect for seasoning and masala blends.`,
-    price: { usd: 2.4, inr: 210 },
-    moq: "500 kg",
-    origin: "Karnataka, India",
-    certificates: ["ISO 9001:2015", "HACCP", "FSSAI"],
-    specifications: {
-      color: "Reddish Brown",
-      length: "10-14cm",
-      moisture: "≤ 10%",
-      pungency: "25,000-35,000 SHU",
-    },
-    packaging: ["25kg PP Bags", "50kg PP Bags", "Custom Packaging Available"],
-    shelfLife: "24 months when stored properly",
-    storage: "Store in a cool, dry place away from direct sunlight",
-  },
-  {
-    id: 5,
-    name: "Byadgi 5531",
-    image: byadgi5531Image,
-    description: `Byadgi 5531 is known for its vibrant color and mild flavor, making it a popular choice for curries and sauces.`,
-    price: { usd: 2.2, inr: 200 },
-    moq: "500 kg",
-    origin: "Karnataka, India",
-    certificates: ["ISO 9001:2015", "HACCP", "FSSAI"],
-    specifications: {
-      color: "Dark Red",
-      length: "12-15cm",
-      moisture: "≤ 11%",
-      pungency: "10,000-20,000 SHU",
-    },
-    packaging: ["25kg PP Bags", "50kg PP Bags", "Custom Packaging Available"],
-    shelfLife: "24 months when stored properly",
-    storage: "Store in a cool, dry place away from direct sunlight",
-  },
-]
+import { products } from "../utils/products"
 
 const ProductSection = styled(Box)(({ theme }) => ({
   padding: "80px 0",
@@ -172,7 +71,7 @@ const NavButton = styled(IconButton)(({ theme }) => ({
 
 const ProductCard = styled(Card)(({ theme }) => ({
   width: "320px",
-  height: "450px",
+  height: "auto",
   background: "linear-gradient(145deg, #262626, #1e1e1e)",
   borderRadius: "16px",
   boxShadow: "0 8px 16px rgba(0, 0, 0, 0.4)",
@@ -388,11 +287,40 @@ const Products = forwardRef((props, ref) => {
                     justifyContent="space-between"
                     sx={{ mt: "auto" }}
                   >
-                    <PriceChip
-                      label={`$${product.price.usd} / ₹${product.price.inr}`}
-                    />
+                    <Stack direction="column" spacing={1} alignItems="center">
+                      <PriceChip
+                        label={`₹${product.price.inr}`}
+                        // label={`$${product.price.usd} / ₹${product.price.inr}`}
+                      />
+                      <Typography fontSize={12} color="#e0c066">
+                        Prices may vary
+                      </Typography>
+                    </Stack>
                     <MoqChip label={`MOQ: ${product.moq}`} variant="outlined" />
                   </Stack>
+
+                  <Box
+                    sx={{ mt: 2, display: "flex", justifyContent: "center" }}
+                  >
+                    <Button
+                      variant="outlined"
+                      size="small"
+                      sx={{
+                        color: "#e0c066",
+                        borderColor: "#e0c066",
+                        height: "45px",
+                        width: "170px",
+                        fontWeight: "bold",
+                        fontSize: "0.8rem",
+                        "&:hover": {
+                          backgroundColor: "#e0c066",
+                          color: "#1a1a1a",
+                        },
+                      }}
+                    >
+                      Contact Us
+                    </Button>
+                  </Box>
                 </ProductContent>
               </ProductCard>
             </motion.div>
