@@ -29,7 +29,7 @@ const products = [
     image: tejaImage,
     description: `High heat and deep red color make Teja S17 one of the most sought-after chili varieties in the spice industry.`,
     price: { usd: 3.0, inr: 250 },
-    moq: "1000 kg",
+    moq: "500 kg",
     origin: "Andhra Pradesh, India",
     certificates: ["ISO 9001:2015", "HACCP", "FSSAI"],
     specifications: {
@@ -48,7 +48,7 @@ const products = [
     image: gunturs4Image,
     description: `Guntur S4 is known for its moderate pungency and rich red color, widely used in Indian and international cuisines.`,
     price: { usd: 2.6, inr: 220 },
-    moq: "800 kg",
+    moq: "500 kg",
     origin: "Andhra Pradesh, India",
     certificates: ["ISO 9001:2015", "HACCP", "FSSAI"],
     specifications: {
@@ -67,7 +67,7 @@ const products = [
     image: tejaImage,
     description: `Armour Teja is a premium variant known for its extra heat and consistent quality, ideal for spice blends and food processing.`,
     price: { usd: 3.2, inr: 270 },
-    moq: "1000 kg",
+    moq: "500 kg",
     origin: "Telangana, India",
     certificates: ["ISO 9001:2015", "HACCP", "FSSAI"],
     specifications: {
@@ -86,7 +86,7 @@ const products = [
     image: gunturs10Image,
     description: `S10 chili is favored for its medium pungency and mild aroma, making it perfect for seasoning and masala blends.`,
     price: { usd: 2.4, inr: 210 },
-    moq: "800 kg",
+    moq: "500 kg",
     origin: "Karnataka, India",
     certificates: ["ISO 9001:2015", "HACCP", "FSSAI"],
     specifications: {
@@ -105,7 +105,7 @@ const products = [
     image: byadgi5531Image,
     description: `Byadgi 5531 is known for its vibrant color and mild flavor, making it a popular choice for curries and sauces.`,
     price: { usd: 2.2, inr: 200 },
-    moq: "800 kg",
+    moq: "500 kg",
     origin: "Karnataka, India",
     certificates: ["ISO 9001:2015", "HACCP", "FSSAI"],
     specifications: {
@@ -334,11 +334,12 @@ const Products = forwardRef((props, ref) => {
                       variant="body2"
                       sx={{ color: "#bbb", fontSize: "0.85rem" }}
                     >
-                      {product.origin}
+                      India
+                      {/* {product.origin} */}
                     </Typography>
                   </Stack>
 
-                  <Box sx={{ mb: 2 }}>
+                  {/* <Box sx={{ mb: 2 }}>
                     {product.certificates &&
                       product.certificates.length > 0 && (
                         <Stack
@@ -379,7 +380,7 @@ const Products = forwardRef((props, ref) => {
                           )}
                         </Stack>
                       )}
-                  </Box>
+                  </Box> */}
 
                   <Stack
                     direction="row"
