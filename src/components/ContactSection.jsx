@@ -295,7 +295,7 @@ const ContactSection = forwardRef((props, ref) => {
                 <Typography
                   align="center"
                   variant="h4"
-                  sx={{ color: "#fff", mb: 4 }}
+                  sx={{ color: "#d4af37", mb: 4 }}
                 >
                   Get in Touch
                 </Typography>
@@ -316,7 +316,12 @@ const ContactSection = forwardRef((props, ref) => {
                           onChange={handleChange}
                           variant="outlined"
                           fullWidth
-                          InputLabelProps={{ shrink: true }}
+                          InputLabelProps={{
+                            shrink: true,
+                            style: {
+                              color: "#d4af37", // Custom color for the label
+                            },
+                          }}
                           sx={{
                             ...textFieldSx,
                             "& .MuiInputBase-root": {
@@ -335,7 +340,12 @@ const ContactSection = forwardRef((props, ref) => {
                           onChange={handleChange}
                           variant="outlined"
                           fullWidth
-                          InputLabelProps={{ shrink: true }}
+                          InputLabelProps={{
+                            shrink: true,
+                            style: {
+                              color: "#d4af37", // Custom color for the label
+                            },
+                          }}
                           sx={{
                             ...textFieldSx,
                             "& .MuiInputBase-root": {
@@ -357,7 +367,12 @@ const ContactSection = forwardRef((props, ref) => {
                           onChange={handleChange}
                           variant="outlined"
                           fullWidth
-                          InputLabelProps={{ shrink: true }}
+                          InputLabelProps={{
+                            shrink: true,
+                            style: {
+                              color: "#d4af37", // Custom color for the label
+                            },
+                          }}
                           sx={textFieldSx}
                         />
                       </Grid>
@@ -369,7 +384,12 @@ const ContactSection = forwardRef((props, ref) => {
                           onChange={handleChange}
                           variant="outlined"
                           fullWidth
-                          InputLabelProps={{ shrink: true }}
+                          InputLabelProps={{
+                            shrink: true,
+                            style: {
+                              color: "#d4af37", // Custom color for the label
+                            },
+                          }}
                           sx={textFieldSx}
                         />
                       </Grid>
@@ -385,7 +405,12 @@ const ContactSection = forwardRef((props, ref) => {
                       value={formData.message}
                       onChange={handleChange}
                       variant="outlined"
-                      InputLabelProps={{ shrink: true }}
+                      InputLabelProps={{
+                        shrink: true,
+                        style: {
+                          color: "#d4af37", // Custom color for the label
+                        },
+                      }}
                       sx={textFieldSx}
                     />
                   </Grid>
