@@ -61,20 +61,11 @@ const Header = ({ scrollToSection, refs }) => {
     setDrawerOpen(open)
   }
 
-  const handleScroll = (ref) => {
-    if (ref?.current) {
-      setTimeout(() => {
-        ref.current.scrollIntoView({ behavior: "smooth", block: "start" })
-      }, 200) // Wait before closing menu
-
-      setDrawerOpen(false) // Close menu
-    }
-  }
-
   const menuItems = [
-    { text: "Home", icon: <HomeIcon />, ref: refs.home },
-    { text: "About", icon: <InfoIcon />, ref: refs.aboutRef },
+    { text: "Home", icon: <HomeIcon />, ref: refs.homeRef },
     { text: "Products", icon: <ShoppingCartIcon />, ref: refs.productsRef },
+    { text: "About", icon: <InfoIcon />, ref: refs.aboutRef },
+
     { text: "Contact", icon: <ContactMailIcon />, ref: refs.contactRef },
   ]
 
@@ -89,6 +80,7 @@ const Header = ({ scrollToSection, refs }) => {
         }}
       >
         <CardMedia
+          onClick={() => scrollToSection(refs.homeRef)}
           src={goldenlogo}
           component="img"
           alt="Logo"
@@ -112,7 +104,7 @@ const Header = ({ scrollToSection, refs }) => {
                 {menuItems.map((item) => (
                   <ListItem key={item.text} disablePadding>
                     <ListItemButton
-                      onClick={() => handleScroll(item.ref)}
+                      onClick={() => scrollToSection(item.ref)}
                       sx={{
                         "&:hover": {
                           backgroundColor: "#d4af37",
@@ -142,7 +134,7 @@ const Header = ({ scrollToSection, refs }) => {
             {menuItems.map((item) => (
               <NavButton
                 key={item.text}
-                onClick={() => handleScroll(item.ref)}
+                onClick={() => scrollToSection(item.ref)}
                 startIcon={<item.icon.type sx={{ color: "#d4af37" }} />}
                 sx={{ fontSize: "1rem" }}
               >
