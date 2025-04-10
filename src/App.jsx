@@ -71,7 +71,10 @@ function App() {
           refs={{ homeRef, aboutRef, productsRef, contactRef }}
         />
         <HeroSection ref={homeRef} />
-        <ProductsSection ref={productsRef} />
+        <ProductsSection
+          refs={{ productsRef, contactRef }}
+          scrollToSection={scrollToSection}
+        />
         <AboutSection ref={aboutRef} />
 
         <ContactSection ref={contactRef} />

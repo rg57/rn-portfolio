@@ -104,7 +104,7 @@ const MoqChip = styled(Chip)({
 })
 
 // Adding forwardRef to make it compatible with your App.jsx refs
-const Products = forwardRef((props, ref) => {
+const Products = forwardRef(({ refs, scrollToSection }, ref) => {
   const scrollContainerRef = useRef(null)
   const theme = useTheme()
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"))
@@ -122,7 +122,7 @@ const Products = forwardRef((props, ref) => {
   }
 
   return (
-    <ProductSection ref={ref}>
+    <ProductSection ref={refs.productsRef}>
       <ProductsContainer>
         <Typography
           variant="h3"
@@ -303,6 +303,7 @@ const Products = forwardRef((props, ref) => {
                     sx={{ mt: 2, display: "flex", justifyContent: "center" }}
                   >
                     <Button
+                      onClick={() => scrollToSection(refs.contactRef)}
                       variant="outlined"
                       size="small"
                       sx={{
