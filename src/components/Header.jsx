@@ -11,6 +11,7 @@ import {
   ListItemButton,
   ListItemIcon,
   ListItemText,
+  CardMedia,
 } from "@mui/material"
 import { styled, useTheme } from "@mui/system"
 import { motion } from "framer-motion"
@@ -20,6 +21,7 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart"
 import ContactMailIcon from "@mui/icons-material/ContactMail"
 import MenuIcon from "@mui/icons-material/Menu"
 import useMediaQuery from "@mui/material/useMediaQuery"
+import goldenlogo from "../assets/golden_logo.png"
 
 const StyledAppBar = styled(AppBar)(({ theme }) => ({
   backgroundColor: theme.palette.primary.main,
@@ -86,12 +88,12 @@ const Header = ({ scrollToSection, refs }) => {
           mx: "auto",
         }}
       >
-        <Typography
-          variant="h6"
-          sx={{ fontSize: "2rem", color: "#d4af37", fontWeight: "bold" }}
-        >
-          RN Enterprises
-        </Typography>
+        <CardMedia
+          src={goldenlogo}
+          component="img"
+          alt="Logo"
+          sx={{ width: "100px", height: "auto" }}
+        />
 
         {isMobile ? (
           <>
