@@ -109,9 +109,9 @@ const itemVariants = {
   visible: { y: 0, opacity: 1 },
 }
 
-const HeroSection = forwardRef((props, ref) => {
+const HeroSection = forwardRef(({ refs, scrollToSection }, ref) => {
   return (
-    <Section ref={ref}>
+    <Section ref={refs.homeRef}>
       <DiagonalImage isTopLeft={true} bgImage={heroImage1} />
       <DiagonalImage isTopLeft={false} bgImage={heroImage2} />
       <Overlay />
@@ -191,6 +191,7 @@ const HeroSection = forwardRef((props, ref) => {
             whileTap={{ scale: 0.98 }}
           >
             <Button
+              onClick={() => scrollToSection(refs.productsRef)}
               variant="contained"
               sx={{
                 backgroundColor: "#d4af37",
